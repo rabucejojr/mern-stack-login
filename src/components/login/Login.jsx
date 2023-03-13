@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const Login = ({setLoginUser}) => {
-const history = useHistory()
+const navigate = useNavigate()
     const [user,setUser] = useState({
         name:"",
         password: ""
@@ -20,7 +20,7 @@ const history = useHistory()
         axios.post("http://localhost:6969/Login",user)
         .then(res=>{alert(res.data.message)
         setLoginUser(res.data.user)
-    history.push("/")})
+    navigate.push("/")})
     }
     return (
         <>
