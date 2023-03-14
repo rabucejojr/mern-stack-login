@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const { getApp, setApp, deleteApp, updateApp } = require('../controller/appController')
+
+//IMPORTS FROM APPCONTROLLER
+const { createApp, readApp, deleteApp, updateApp } = require('../controller/appController')
 
 
-// routes
-router.get('/', getApp)
-router.post('/', setApp)
-router.put('/:id', updateApp)
-router.delete('/:id', deleteApp)
+// REROUTES TO SPECIFIC API DESTINATION
+// CHECKED VIA POSTMAN FOR HTTP RESPONSES
+router.route('/').get(readApp).post(createApp)
+router.route('/:id').delete(deleteApp).put(updateApp)
 
 module.exports = router
