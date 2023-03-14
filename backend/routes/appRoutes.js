@@ -1,20 +1,12 @@
 const express = require('express')
 const router = express.Router()
-
+const { getApp, setApp, deleteApp, updateApp } = require('../controller/appController')
 
 
 // routes
-router.get('/', (req, res) => {
-    res.status(200).json({ message: 'Login successful' })
-})
-router.post('/', (req, res) => {
-    res.status(200).json({ message: 'Post successful' })
-})
-router.put('/:id', (req, res) => {
-    res.status(200).json({ message: `Update successful ${req.params.id}` })
-})
-router.delete('/:id', (req, res) => {
-    res.status(200).json({ message: `Delete successful ${req.params.id}` })
-})
+router.get('/', getApp)
+router.post('/', setApp)
+router.put('/:id', updateApp)
+router.delete('/:id', deleteApp)
 
 module.exports = router
